@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table align="center" border="2">
+        <tr bgcolor="#00bfff">
+            <th width="100">NO</th>
+            <th width="200">TITLE</th>
+            <th width="150">DESCRIPTION</th>
+            <th width="150">CREATED ON</th>
+            <th width="150">UPDATED ON</th>
+            <th width="100">UPDATE</th>
+            <th width="100">DELETE</th>
+        </tr>
+
+        {% for x in data %}
+            <tr>
+            <th width="100">{{ x.No }}</th>
+            <th width="200">{{ x.Title}}</th>
+            <th width="150">{{ x.Description }}</th>
+            <th width="150">{{ x.Created_on }}</th>
+            <th width="150">{{ x.Updated_on }}</th>
+            <th width="100">
+
+                <a href="{% url 'update' %}?update_id={{ x.No }}">
+                    <button type="submit">UPDATE</button>
+                </a>
+            </th>
+            <th width="100">
+
+
+                <form action="{% url 'delete' %}" method="post">
+                    {% csrf_token %}
+                <input type="hidden" name="del_idno" value="{{ x.No }}">
+                <button type="submit">Delete</button>
+                </form>
+
+            </th>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+</body>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'save' %}" method="post">
+        {% csrf_token %}
+    <table align="center" border="2" width="500">
+        <tr><th width="200">Create Notes</th></tr>
+        <tr><th><input type="number" name="No" placeholder="No" required></th></tr>
+        <tr><th><input type="text" name="Title" placeholder="Title" required></th></tr>
+        <tr><th><input type="text" name="Desc" placeholder="Description" required></th></tr>
+        <tr><th><input type="date" name="create" placeholder="Created On" required></th></tr>
+        <tr><th><input type="date" name="update" placeholder="updated On" required></th></tr>
+        <tr><th><button type="submit">Save</button> </th></tr>
+    </table>
+    </form>
+</body>
+</html>
